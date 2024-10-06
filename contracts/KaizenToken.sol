@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract KaizenToken is ERC20, Ownable {
     uint256 public constant TOTAL_SUPPLY = 1000000 * 10 ** 18;
-    uint256 public constant USD_TO_KAIZEN_RATE = 1000;
+    uint256 public constant USD_TO_KAIZEN_RATE = 1000 * 10 ** 18;
 
     constructor() ERC20("Kaizen", "KZN") Ownable(msg.sender) {
         _mint(msg.sender, TOTAL_SUPPLY);
