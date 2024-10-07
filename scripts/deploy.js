@@ -1,4 +1,5 @@
 const hre = require("hardhat");
+const fs = require("fs");
 
 async function main() {
   const kaizenTokenContract = await hre.ethers.getContractFactory(
@@ -12,6 +13,24 @@ async function main() {
   const kaizenTokenAddress = await kaizenToken.getAddress();
 
   console.log("KaizenToken deployed to:", kaizenTokenAddress);
+
+  const abiFile = fs.readFileSync(
+    "./artifacts/contracts/KaizenToken.sol/KaizenToken.json",
+    "utf8"
+  );
+  const abi = JSON.parse(abiFile).abi;
+
+  fs.writeFileSync(
+    "./frontend/src/contractData.json",
+    JSON.stringify(
+      {
+        address: kaizenTokenAddress,
+        abi: abi,
+      },
+      null,
+      2
+    )
+  );
 }
 
 main()
