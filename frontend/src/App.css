@@ -1,38 +1,75 @@
-.App {
+/* Global Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.mainDiv {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+  max-width: 400px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #0a74da;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Account Info Styling */
+p {
+  font-size: 1rem;
+  margin: 0.75rem 0;
+  color: #333333;
+  word-break: break-all; /* Ensures account address breaks properly */
+  text-align: left; /* Align account and balance text to the left */
+  margin-left: 10px; /* Add some space to the left for better padding */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Input and Button Layout */
+input {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #0a74da;
   color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #005bb5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Group spacing for buttons and inputs */
+div > div {
+  margin-top: 1.5rem; /* Adds more space between sections */
+}
+
+@media (max-width: 768px) {
+  div {
+    max-width: 90%;
   }
 }
