@@ -18,7 +18,7 @@ function KaizenTokenApp() {
       const provider = await detectEthereumProvider();
       if (provider) {
         const ethersProvider = new ethers.BrowserProvider(provider);
-        const signer = await ethersProvider.getSigner();
+        const signer = await ethersProvider?.getSigner();
         const tokenContract = new ethers.Contract(
           CONTRACT_ADDRESS,
           CONTRACT_ABI,
@@ -26,14 +26,14 @@ function KaizenTokenApp() {
         );
         setContract(tokenContract);
 
-        const accounts = await provider.request({ method: "eth_accounts" });
-        if (accounts.length > 0) {
+        const accounts = await provider?.request({ method: "eth_accounts" });
+        if (accounts?.length > 0) {
           setAccount(accounts[0]);
           updateBalance(accounts[0], tokenContract);
         }
 
         provider.on("accountsChanged", (newAccounts) => {
-          if (newAccounts.length > 0) {
+          if (newAccounts?.length > 0) {
             setAccount(newAccounts[0]);
             updateBalance(newAccounts[0], tokenContract);
           } else {
@@ -58,7 +58,7 @@ function KaizenTokenApp() {
     try {
       const provider = await detectEthereumProvider();
       if (provider) {
-        const accounts = await provider.request({
+        const accounts = await provider?.request({
           method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
@@ -71,7 +71,7 @@ function KaizenTokenApp() {
 
   const buyTokens = async () => {
     try {
-      const tx = await contract.buyTokens({
+      const tx = await contract?.buyTokens({
         value: ethers.parseEther(buyAmount),
       });
       await tx.wait();
@@ -84,7 +84,7 @@ function KaizenTokenApp() {
 
   const sellTokens = async () => {
     try {
-      const tx = await contract.sellTokens(ethers.parseUnits(sellAmount, 18));
+      const tx = await contract?.sellTokens(ethers.parseUnits(sellAmount, 18));
       await tx.wait();
       updateBalance(account, contract);
       setSellAmount("");
