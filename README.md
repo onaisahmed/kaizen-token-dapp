@@ -1,6 +1,6 @@
 # KaizenToken
 
-KaizenToken is an ERC-20 token implementation using Solidity. This project demonstrates a token with buy and sell functionality, including direct token purchases with Ether, token sales back to the contract, and owner-only Ether withdrawal. It leverages OpenZeppelin's ERC20 and Ownable libraries for secure and standardized token management. Features include a fixed exchange rate of 1000 KZN per ETH, pre-minted total supply allocated to the owner, and built-in liquidity for token sales.
+KaizenToken is an ERC-20 token implementation using Solidity, featuring a React frontend for easy interaction. This project demonstrates a token with buy and sell functionality, including direct token purchases with Ether, token sales back to the contract, and owner-only Ether withdrawal. It leverages OpenZeppelin's ERC20 and Ownable libraries for secure and standardized token management. Features include a fixed exchange rate of 1000 KZN per ETH, pre-minted total supply allocated to the owner, and built-in liquidity for token sales.
 
 ## Project Structure
 
@@ -13,7 +13,12 @@ The project follows a structured layout for better organization:
     - `deploy.js` _(Deploys the KaizenToken contract to the blockchain)_
   - **test/** _(Contains the test cases for the contract)_
     - `KaizenToken.test.js` _(Unit tests for the KaizenToken contract)_
+  - **frontend/** _(Contains the React frontend application)_
+    - `src/` _(Source files for the React app)_
+    - `public/` _(Public assets for the React app)_
+    - `package.json` _(Frontend dependencies and scripts)_
   - **hardhat.config.js** _(Hardhat configuration file)_
+  - **package.json** _(Project dependencies and scripts)_
 
 ## Features
 
@@ -22,6 +27,7 @@ The project follows a structured layout for better organization:
 - **Withdraw Ether**: The contract owner can withdraw Ether from the contract balance.
 - **ERC-20 Standard**: Follows the ERC-20 token standard, including functions like `transfer`, `balanceOf`, and more.
 - **OpenZeppelin Libraries**: Utilizes the well-audited OpenZeppelin ERC20 and Ownable libraries.
+- **React Frontend**: User-friendly interface for interacting with the smart contract.
 
 ## Getting Started
 
@@ -37,7 +43,7 @@ The project follows a structured layout for better organization:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/onaisahmed/kaizen-token.git
+   git clone https://github.com/onaisahmed/kaizen-token-dapp.git
    cd kaizen-token
    ```
 
@@ -47,51 +53,22 @@ The project follows a structured layout for better organization:
    npm install
    ```
 
-### Compiling the Contract
+### Compiling and Running the Project
 
-1. Run the following command to compile the Solidity contract:
+To compile the smart contract, start the local blockchain, deploy the contract, and run the frontend, use the following command:
 
-   ```bash
-   npx hardhat compile
-   ```
+```bash
+npm run dev
+```
 
-### Deploying the Contract
+This command will:
 
-1. To deploy the contract to a local blockchain, run the Hardhat node:
+1. Compile the Solidity contract
+2. Start a local Hardhat node
+3. Deploy the KaizenToken contract to the local network
+4. Start the React frontend application
 
-   ```bash
-   npx hardhat node
-   ```
-
-2. Deploy the KaizenToken contract to the local network:
-
-   ```bash
-   npx hardhat run scripts/deploy.js --network localhost
-   ```
-
-   The contract address will be printed in the console after deployment.
-
-### Interacting with the Contract
-
-You can interact with the KaizenToken contract using the Hardhat console or via scripts. Some key functions include:
-
-- **Buy Tokens**:
-
-  ```js
-  await kaizenToken.buyTokens({ value: ethers.utils.parseEther("1") });
-  ```
-
-- **Sell Tokens**:
-
-  ```js
-  await kaizenToken.sellTokens(tokenAmount);
-  ```
-
-- **Withdraw Ether**:
-
-  ```js
-  await kaizenToken.withdrawEth();
-  ```
+The frontend will be available at `http://localhost:3000` (or another port if 3000 is occupied).
 
 ### Testing the Contract
 
@@ -101,3 +78,11 @@ You can interact with the KaizenToken contract using the Hardhat console or via 
    ```bash
    npx hardhat test
    ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
