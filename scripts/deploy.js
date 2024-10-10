@@ -2,6 +2,7 @@ const hre = require("hardhat");
 const fs = require("fs");
 
 async function main() {
+  await resetNetwork();
   const kaizenTokenContract = await hre.ethers.getContractFactory(
     "KaizenToken"
   );
@@ -31,6 +32,13 @@ async function main() {
       2
     )
   );
+}
+
+async function resetNetwork() {
+  await network.provider.request({
+    method: "hardhat_reset",
+    params: [],
+  });
 }
 
 main()
