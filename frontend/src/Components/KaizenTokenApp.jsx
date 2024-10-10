@@ -50,8 +50,12 @@ function KaizenTokenApp() {
   }, []);
 
   const updateBalance = async (address, contract) => {
-    const balance = await contract?.balanceOf(address);
-    setBalance(ethers.formatUnits(balance, 18));
+    try {
+      const balance = await contract?.balanceOf(address);
+      setBalance(ethers.formatUnits(balance, 18));
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   const connectWallet = async () => {
@@ -96,7 +100,7 @@ function KaizenTokenApp() {
 
   return (
     <div className="mainDiv">
-      <h1>Kaizen Token App</h1>
+      <h1>Kaizen Token Dapp</h1>
       {!account ? (
         <button onClick={connectWallet}>Connect Wallet</button>
       ) : (
