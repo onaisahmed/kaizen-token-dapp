@@ -78,11 +78,3 @@ The frontend will be available at `http://localhost:3000` (or another port if 30
    ```bash
    npx hardhat test
    ```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
